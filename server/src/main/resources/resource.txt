@@ -1,0 +1,2 @@
+REST api from live crypto currency feed
+https://coinmarketcap.com/api/
