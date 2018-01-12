@@ -5,4 +5,6 @@ https://coinmarketcap.com/api/
 #DB setup
 CREATE USER 'bitchart'@'localhost' IDENTIFIED BY 'bitchart';
 
+CREATE DATABASE bitchart;
+
 GRANT CREATE,DELETE,INSERT,SELECT,UPDATE ON bitchart.* TO 'bitchart'@'localhost';
