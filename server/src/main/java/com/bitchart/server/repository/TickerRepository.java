@@ -1,14 +1,16 @@
 package com.bitchart.server.repository;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.bitchart.server.bean.TickerEntity;
 
 /**
  * @author Vinayak More
  *
  * @date 12-Jan-2018
  */
-@Repository
-public class TickerRepository {
-
+public interface TickerRepository extends CrudRepository<TickerEntity, Long> {
+    
 }
-
