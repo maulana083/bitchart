@@ -1,5 +1,7 @@
 package com.bitchart.server.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,10 @@ public class TickerService {
 
     public Ticker getTicker(String tickerId) {
         return poolService.getTicker(tickerId);
+    }
+    
+    public List<Ticker> getAllTicker(){
+        return poolService.getAllTicker();
     }
 
 }

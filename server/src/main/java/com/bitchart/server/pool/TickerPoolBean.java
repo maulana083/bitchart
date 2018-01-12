@@ -1,5 +1,6 @@
 package com.bitchart.server.pool;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,6 +38,10 @@ public class TickerPoolBean {
             System.out.println(String.format("Error:tickerId:%s not Exists", tickerId).toString());
         }
         return dataMap.get(tickerId);
+    }
+    
+    public Collection<Ticker> getAllTicker(){
+        return dataMap.values();
     }
 
 

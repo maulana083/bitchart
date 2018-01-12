@@ -1,5 +1,7 @@
 package com.bitchart.server.pool;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -50,6 +52,10 @@ public class TickerPoolService {
     
     public Ticker getTicker(String tickerId){
         return bean.getTicker(tickerId);
+    }
+
+    public List<Ticker> getAllTicker() {
+        return new ArrayList<Ticker>(bean.getAllTicker());
     }
 
 
