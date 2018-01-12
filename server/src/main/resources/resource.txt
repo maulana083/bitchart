@@ -1,2 +1,8 @@
 REST api from live crypto currency feed
 https://coinmarketcap.com/api/
+
+
+#DB setup
+CREATE USER 'bitchart'@'localhost' IDENTIFIED BY 'bitchart';
+
+GRANT CREATE,DELETE,INSERT,SELECT,UPDATE ON bitchart.* TO 'bitchart'@'localhost';
