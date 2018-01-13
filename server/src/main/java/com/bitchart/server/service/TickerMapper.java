@@ -23,7 +23,8 @@ public class TickerMapper {
         entity.setTickerName(ticker.getName());
         entity.setSymbol(ticker.getSymbol());
         entity.setPriceUsd(Double.parseDouble(ticker.getPriceUsd()));
-        entity.setLastUpdated(new Timestamp(Long.parseLong(ticker.getLastUpdated())));
+        entity.setLastUpdated(new Timestamp(Long.parseLong(ticker.getLastUpdated())*1000));
+        entity.setLastUpdatedStr(ticker.getLastUpdated());
         return entity;
     }
 

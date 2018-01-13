@@ -1,7 +1,9 @@
 package com.bitchart.server.repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.bitchart.server.bean.TickerEntity;
@@ -12,5 +14,10 @@ import com.bitchart.server.bean.TickerEntity;
  * @date 12-Jan-2018
  */
 public interface TickerRepository extends CrudRepository<TickerEntity, Long> {
+
+    @Query("SELECT MAX(lastUpdated) FROM TickerEntity")
+    public Timestamp getMaxLastUpdated();
+    
+    public TickerEntity findByTickerIdAndLastUpdatedStr(String tickerId,String lastUpdatedStr);
     
 }

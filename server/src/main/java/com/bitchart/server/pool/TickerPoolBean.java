@@ -28,7 +28,7 @@ public class TickerPoolBean {
     @Autowired
     private ApplicationEventPublisher publisher;
 
-    public void populateMap(List<Ticker> tickers) {
+    public synchronized void populateMap(List<Ticker> tickers) {
         tickers.stream().forEach(t -> dataMap.put(t.getId(), t));
         publisher.publishEvent(new TickerPoolUpdatedEvent(System.currentTimeMillis()));
     }
