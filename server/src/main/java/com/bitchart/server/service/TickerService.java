@@ -1,11 +1,12 @@
 package com.bitchart.server.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitchart.server.bean.Ticker;
+import com.bitchart.server.bean.TickerBean;
 import com.bitchart.server.bean.TickerEntity;
 import com.bitchart.server.pool.TickerPoolService;
 import com.bitchart.server.repository.TickerRepository;
@@ -27,22 +28,23 @@ public class TickerService {
     @Autowired
     private TickerMapper mapper;
 
-    public Ticker getTicker(String tickerId) {
+    public TickerBean getTicker(String tickerId) {
         return poolService.getTicker(tickerId);
     }
 
-    public List<Ticker> getAllTicker() {
+    public List<TickerBean> getAllTicker() {
         return poolService.getAllTicker();
     }
 
     public synchronized void saveAllTickerData() {
-        List<Ticker> allTicker = getAllTicker();
+        List<TickerBean> allTicker = getAllTicker();
         if (repository.count() == 0) {
             repository.save(mapper.mapList(allTicker));
         } else {
-            for (Ticker ticker : allTicker) {
+            for (TickerBean ticker : allTicker) {
                 TickerEntity entity =
-                        repository.findByTickerIdAndLastUpdatedStr(ticker.getId(), ticker.getLastUpdated());
+                        repository.findByTickerIdAndLastUpdated(ticker.getId(), new Timestamp(ticker.getLastUpdated()
+                                .getTime()));
                 if (entity == null) {
                     repository.save(mapper.map(ticker));
                 }

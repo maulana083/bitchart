@@ -17,6 +17,6 @@ public interface TickerRepository extends CrudRepository<TickerEntity, Long> {
     @Query("SELECT MAX(lastUpdated) FROM TickerEntity")
     public Timestamp getMaxLastUpdated();
     
-    public TickerEntity findByTickerIdAndLastUpdatedStr(String tickerId,String lastUpdatedStr);
+    public TickerEntity findByTickerIdAndLastUpdated(String tickerId,Timestamp lastUpdated);
     
 }

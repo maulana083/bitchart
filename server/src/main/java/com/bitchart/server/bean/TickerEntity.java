@@ -36,9 +36,6 @@ public class TickerEntity {
     @Column(name="last_updated")
     private Timestamp lastUpdated;
     
-    @Column(name="last_updated_str")
-    private String lastUpdatedStr;
-
     public long getId() {
         return id;
     }
@@ -86,15 +83,5 @@ public class TickerEntity {
     public void setLastUpdated(Timestamp lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
-
-    public String getLastUpdatedStr() {
-        return lastUpdatedStr;
-    }
-
-    public void setLastUpdatedStr(String lastUpdatedStr) {
-        this.lastUpdatedStr = lastUpdatedStr;
-    }
-    
-
 }
 

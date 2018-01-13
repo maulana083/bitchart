@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.bitchart.server.bean.Ticker;
+import com.bitchart.server.bean.TickerBean;
 
 /**
  * @author Vinayak More
@@ -22,24 +22,24 @@ import com.bitchart.server.bean.Ticker;
 @Scope(scopeName = BeanDefinition.SCOPE_SINGLETON)
 public class TickerPoolBean {
 
-    private Map<String, Ticker> dataMap = new ConcurrentHashMap<String, Ticker>();
+    private Map<String, TickerBean> dataMap = new ConcurrentHashMap<String, TickerBean>();
 
     @Autowired
     private ApplicationEventPublisher publisher;
 
-    public synchronized void populateMap(List<Ticker> tickers) {
+    public synchronized void populateMap(List<TickerBean> tickers) {
         tickers.stream().forEach(t -> dataMap.put(t.getId(), t));
         publisher.publishEvent(new TickerPoolUpdatedEvent(System.currentTimeMillis()));
     }
 
-    public Ticker getTicker(String tickerId) {
+    public TickerBean getTicker(String tickerId) {
         if (!dataMap.containsKey(tickerId)) {
             System.out.println(String.format("Error:tickerId:%s not Exists", tickerId).toString());
         }
         return dataMap.get(tickerId);
     }
     
-    public Collection<Ticker> getAllTicker(){
+    public Collection<TickerBean> getAllTicker(){
         return dataMap.values();
     }
 

@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bitchart.server.bean.Ticker;
+import com.bitchart.server.bean.TickerBean;
 import com.bitchart.server.boot.ApplicationConfiguration;
 
 /**
@@ -33,7 +33,7 @@ public class TickerServiceTest {
     
     @Test 
     public void getTickerTest(){
-        Ticker ticker = service.getTicker("bitcoin");
+        TickerBean ticker = service.getTicker("bitcoin");
         Assert.assertNotNull(ticker);
         System.out.println("BITCHART:tickerId:"+ticker.getId());
         System.out.println("BITCHART:tickerPrice:"+ticker.getPriceUsd());

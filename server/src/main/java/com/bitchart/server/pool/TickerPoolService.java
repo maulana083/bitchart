@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.bitchart.server.bean.Ticker;
+import com.bitchart.server.bean.TickerBean;
 import com.bitchart.server.client.TickerRestClient;
 
 /**
@@ -50,12 +50,12 @@ public class TickerPoolService {
         service.shutdown();
     }
     
-    public Ticker getTicker(String tickerId){
+    public TickerBean getTicker(String tickerId){
         return bean.getTicker(tickerId);
     }
 
-    public List<Ticker> getAllTicker() {
-        return new ArrayList<Ticker>(bean.getAllTicker());
+    public List<TickerBean> getAllTicker() {
+        return new ArrayList<TickerBean>(bean.getAllTicker());
     }
 
 

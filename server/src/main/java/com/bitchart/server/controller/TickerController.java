@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitchart.server.bean.Ticker;
+import com.bitchart.server.bean.TickerBean;
 import com.bitchart.server.service.TickerService;
 
 /**
@@ -23,12 +23,12 @@ public class TickerController {
     private TickerService service;
 
     @RequestMapping(value = "/tickers", method = RequestMethod.GET)
-    public List<Ticker> getAllTicker() {
+    public List<TickerBean> getAllTicker() {
         return service.getAllTicker();
     }
 
     @RequestMapping(value = "/tickers/{tickerId}", method = RequestMethod.GET)
-    public Ticker getTicker(@PathVariable("tickerId") String tickerId) {
+    public TickerBean getTicker(@PathVariable("tickerId") String tickerId) {
         return service.getTicker(tickerId);
     }
 

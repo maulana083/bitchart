@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.bitchart.server.bean.Ticker;
+import com.bitchart.server.bean.TickerBean;
 import com.bitchart.server.bean.TickerEntity;
 
 /**
@@ -17,18 +17,17 @@ import com.bitchart.server.bean.TickerEntity;
 @Component
 public class TickerMapper {
 
-    public TickerEntity map(Ticker ticker) {
+    public TickerEntity map(TickerBean ticker) {
         TickerEntity entity = new TickerEntity();
         entity.setTickerId(ticker.getId());
         entity.setTickerName(ticker.getName());
         entity.setSymbol(ticker.getSymbol());
-        entity.setPriceUsd(Double.parseDouble(ticker.getPriceUsd()));
-        entity.setLastUpdated(new Timestamp(Long.parseLong(ticker.getLastUpdated())*1000));
-        entity.setLastUpdatedStr(ticker.getLastUpdated());
+        entity.setPriceUsd(ticker.getPriceUsd());
+        entity.setLastUpdated(new Timestamp(ticker.getLastUpdated().getTime()));
         return entity;
     }
 
-    public List<TickerEntity> mapList(List<Ticker> tickers) {
+    public List<TickerEntity> mapList(List<TickerBean> tickers) {
         return tickers.stream().map(e -> map(e)).collect(Collectors.toList());
     }
 }
