@@ -4,6 +4,7 @@ package com.bitchart.server.boot;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 import com.bitchart.server.ServerApplication;
@@ -15,6 +16,7 @@ import com.bitchart.server.ServerApplication;
  */
 @Configuration
 @ComponentScan(basePackageClasses = ServerApplication.class)
+@EnableScheduling
 public class ApplicationConfiguration {
 
     @Bean
