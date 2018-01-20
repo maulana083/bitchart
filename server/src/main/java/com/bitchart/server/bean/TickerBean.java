@@ -18,14 +18,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class TickerBean {
 
-    private static DateFormat df = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+    private static final DateFormat df = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+    @JsonIgnore
+    private Date lastUpdated;
 
     private String id;
+    private int sequenceId;
     private String name;
     private String symbol;
     private double priceUsd;
-    @JsonIgnore
-    private Date lastUpdated;
+    private double percentChange24H;
+    private double percentChange1H;
     private String lastUpdatedTime;
 
     public String getId() {
@@ -34,6 +37,14 @@ public class TickerBean {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getSequenceId() {
+        return sequenceId;
+    }
+
+    public void setSequenceId(int sequenceId) {
+        this.sequenceId = sequenceId;
     }
 
     public String getName() {
@@ -74,6 +85,24 @@ public class TickerBean {
 
     public void setLastUpdatedTime(String lastUpdatedTime) {
         this.lastUpdatedTime = lastUpdatedTime;
+    }
+    
+    
+
+    public double getPercentChange24H() {
+        return percentChange24H;
+    }
+
+    public void setPercentChange24H(double percentChange24H) {
+        this.percentChange24H = percentChange24H;
+    }
+
+    public double getPercentChange1H() {
+        return percentChange1H;
+    }
+
+    public void setPercentChange1H(double percentChange1H) {
+        this.percentChange1H = percentChange1H;
     }
 
     @Override

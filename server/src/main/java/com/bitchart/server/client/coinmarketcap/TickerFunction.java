@@ -17,9 +17,12 @@ public class TickerFunction implements Function<Ticker, TickerBean> {
     public TickerBean apply(Ticker t) {
         TickerBean bean = new TickerBean();
         bean.setId(t.getId());
+        bean.setSequenceId(Integer.parseInt(t.getRank()));
         bean.setName(t.getName());
         bean.setSymbol(t.getSymbol());
         bean.setPriceUsd(Double.parseDouble(t.getPriceUsd()));
+        bean.setPercentChange1H(Double.parseDouble(t.getPercentChange1h()));
+        bean.setPercentChange24H(Double.parseDouble(t.getPercentChange24h()));
         bean.setLastUpdated(new Date(Long.parseLong(t.getLastUpdated())*1000));
         return bean;
     }

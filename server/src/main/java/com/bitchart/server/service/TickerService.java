@@ -2,6 +2,7 @@ package com.bitchart.server.service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,9 @@ public class TickerService {
     }
 
     public List<TickerBean> getAllTicker() {
-        return poolService.getAllTicker();
+        return poolService.getAllTicker().stream()
+                .sorted((o1, o2) -> Integer.compare(o1.getSequenceId(), o2.getSequenceId()))
+                .collect(Collectors.toList());
     }
 
     public synchronized void saveAllTickerData() {

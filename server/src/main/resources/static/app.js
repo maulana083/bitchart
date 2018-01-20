@@ -36,16 +36,38 @@ function sendName() {
 }
 
 function showGreeting(message) {
-	$("#greetings").html("<tr><th> Time</th><th>Name</th><th> Symbol</th><th>Price in USD</td></tr>");
+	$("#greetings").html("<tr>" +
+			"<th> Time</th>" +
+			"<th>Name</th>" +
+			"<th> Symbol</th>" +
+			"<th>Price in USD</td>" +
+			"<th>1 Hour % change</td>" +
+			"<th>24 Hour % change</td>" +
+			"</tr>");
 
 	$.each(message, function(key, value) {
-		$("#greetings").append(
-				"<tr>" +
-				"<td>" + value.lastUpdatedTime + " </td>"+
-				"<td>" + value.name + " </td>"+
-				"<td>" + value.symbol + " </td>" +
-				"<td>" + value.priceUsd+"</td>" +
-				"</tr>");
+		
+		var html="<tr>" +
+		"<td>" + value.lastUpdatedTime + " </td>"+
+		"<td>" + value.name + " </td>"+
+		"<td>" + value.symbol + " </td>" +
+		"<td>$" + value.priceUsd+"</td>";
+		if(value.percentChange1H>=0){
+			html+="<td id='green'>";
+		}else{
+			html+="<td id='red'>";
+		}
+		html+=(value.percentChange1H + " </td>"); 
+		if(value.percentChange24H>=0){
+			html+="<td id='green'>";
+		}else{
+			html+="<td id='red'>";
+		}
+		html+=value.percentChange24H + " </td>";
+		html+="</tr>";
+		
+		
+		$("#greetings").append(html);
 	});
 	
 	$("#last-updated").html(new Date().toLocaleDateString()+" "+new Date().toLocaleTimeString());
