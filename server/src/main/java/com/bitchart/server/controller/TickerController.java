@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.bitchart.server.bean.TickerBean;
 import com.bitchart.server.service.TickerService;
@@ -20,7 +21,7 @@ import com.bitchart.server.service.TickerService;
  *
  * @date 12-Jan-2018
  */
-@Controller
+@RestController
 public class TickerController {
 
     @Autowired
@@ -39,11 +40,11 @@ public class TickerController {
         return service.getTicker(tickerId);
     }
     
+    @RequestMapping("/t")
     @MessageMapping("/hello")
     @SendTo("/ws/greetings")
     @Scheduled(fixedDelay=30000)
     public void greeting() throws Exception {
-        System.out.println("TickerController.greeting()");
         template.convertAndSend("/ws/greetings", service.getAllTicker());
     }
 

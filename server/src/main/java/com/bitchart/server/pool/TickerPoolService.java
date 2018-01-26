@@ -40,7 +40,6 @@ public class TickerPoolService {
 
     @PostConstruct
     public void initPool() {
-        System.out.println("TickerPoolService.initPool()");
         service.scheduleAtFixedRate(new TickerPoolCommand(client, bean), 0, period, TimeUnit.SECONDS);
     }
 

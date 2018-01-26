@@ -20,7 +20,6 @@ public class TickerPoolEventListener {
 
     @EventListener
     public void onTickerPoolUpdated(TickerPoolUpdatedEvent event) {
-        System.out.println("TickerPoolEventListener.onTickerPoolUpdated()");
         service.saveAllTickerData();
     }
 }

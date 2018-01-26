@@ -20,7 +20,6 @@ public class TickerPoolCommand implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("TickerPoolCommand.run()");
         try {
             bean.populateMap(client.getAllTickers());
         } catch (Exception e) {
