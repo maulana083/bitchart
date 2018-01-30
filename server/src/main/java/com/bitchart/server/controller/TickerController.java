@@ -40,7 +40,6 @@ public class TickerController {
         return service.getTicker(tickerId);
     }
     
-    @RequestMapping("/t")
     @MessageMapping("/hello")
     @SendTo("/ws/greetings")
     @Scheduled(fixedDelay=30000)

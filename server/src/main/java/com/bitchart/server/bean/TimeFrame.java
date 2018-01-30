@@ -10,7 +10,18 @@ import java.util.Date;
 public class TimeFrame {
 
     private Date timestamp;
-    private double open, high = 0, low = Double.MAX_VALUE, close, mid;
+    private double open, high, low, close, mid;
+
+    public TimeFrame() {}
+
+    public TimeFrame(Date timestamp, double open, double high, double low, double close, double mid) {
+        this.timestamp = timestamp;
+        this.open = open;
+        this.high = high;
+        this.low = low;
+        this.close = close;
+        this.mid = mid;
+    }
 
     public Date getTimestamp() {
         return timestamp;
@@ -105,6 +116,6 @@ public class TimeFrame {
             return false;
         return true;
     }
-    
-    
+
+
 }
