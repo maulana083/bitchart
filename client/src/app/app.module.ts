@@ -5,18 +5,26 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker/ticker.component';
+import { TickerDetailComponent } from './ticker-detail/ticker-detail.component';
+import { TickerService } from './ticker.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TickerComponent
+    TickerComponent,
+    TickerDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [TickerService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
