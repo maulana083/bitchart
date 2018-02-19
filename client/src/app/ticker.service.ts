@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TICKERS, API_URL } from './ticker-mock';
+import { API_URL } from './ticker-mock';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Ticker } from './ticker';
@@ -15,6 +15,11 @@ export class TickerService {
   public getTickers(): Observable<Ticker[]>{
     this.messageService.add("TickerService: fetched Tickers");
     return this.httpClient.get<Ticker[]>(this.tickersUrl);
+  }
+
+  public getTicker(id): Observable<Ticker>{
+    this.messageService.add("TickerService: fetched Tickers");
+    return this.httpClient.get<Ticker>(this.tickersUrl+"/"+id);
   }
 
 }

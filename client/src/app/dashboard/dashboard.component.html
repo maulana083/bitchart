@@ -3,6 +3,7 @@
   <a *ngFor="let ticker of tickers" class="col-1-4" routerLink="/detail/{{ticker.id}}">
     <div class="module hero">
       <h4>{{ticker.name}}</h4>
+      <h5>{{ticker.priceUsd | currency}}</h5>
     </div>
   </a>
 </div>

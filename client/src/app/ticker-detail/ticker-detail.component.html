@@ -1,3 +1,7 @@
+<button (click)="goBack()">go back</button>
+
 <div *ngIf="ticker">
-  <p>{{ticker.name}} is selected , graph goes here</p>
+  <p>{{ticker.name}} is selected , Current Price is {{ticker.priceUsd | currency}}</p>
+
+  <div id="chart_div" style="width: 900px; height: 500px;"></div>
 </div>

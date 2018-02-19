@@ -1,6 +1,7 @@
-<div>
-    <ul>
-        <li *ngFor="let ticker of tickers" (click)="onSelect(ticker)">{{ticker.name}} || {{ticker.priceUsd}}</li>
-    </ul>
-</div>
-
+<ul class="heroes">
+    <li *ngFor="let ticker of tickers">
+      <a routerLink="/detail/{{ticker.id}}">
+        <span class="badge">{{ticker.id}}</span> {{ticker.name}} || {{ticker.priceUsd}}
+      </a>
+    </li>
+  </ul>
