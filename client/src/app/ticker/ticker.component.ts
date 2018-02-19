@@ -16,7 +16,7 @@ export class TickerComponent implements OnInit{
   ticker : Ticker = {
     id :1,
     name:"bitcoin",
-    price:8000
+    priceUsd:8000
   };
 
   constructor(_tickerService:TickerService){

@@ -1,6 +1,6 @@
 <div>
     <ul>
-        <li *ngFor="let ticker of tickers" (click)="onSelect(ticker)">{{ticker.name}} || {{ticker.price}}</li>
+        <li *ngFor="let ticker of tickers" (click)="onSelect(ticker)">{{ticker.name}} || {{ticker.priceUsd}}</li>
     </ul>
 </div>
-<ticker-detail [ticker]="selectedTicker"></ticker-detail>
+

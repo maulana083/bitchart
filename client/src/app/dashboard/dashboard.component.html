@@ -1,0 +1,8 @@
+<h3>Top Trading Currencies</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let ticker of tickers" class="col-1-4" routerLink="/detail/{{ticker.id}}">
+    <div class="module hero">
+      <h4>{{ticker.name}}</h4>
+    </div>
+  </a>
+</div>
