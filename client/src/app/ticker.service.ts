@@ -13,7 +13,7 @@ export class TickerService {
   constructor(private httpClient:HttpClient, private messageService:MessageService) { }
 
   public getTickers(): Observable<Ticker[]>{
-    this.messageService.add("TickerService: fetched Tickers");
+    // this.messageService.add("TickerService: fetched Tickers");
     return this.httpClient.get<Ticker[]>(this.tickersUrl);
   }
 
