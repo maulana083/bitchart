@@ -30,6 +30,7 @@ public class TickerBean {
     private double percentChange24H;
     private double percentChange1H;
     private String lastUpdatedTime;
+    private long VolumeUsd24Usd;
 
     public String getId() {
         return id;
@@ -103,6 +104,14 @@ public class TickerBean {
 
     public void setPercentChange1H(double percentChange1H) {
         this.percentChange1H = percentChange1H;
+    }
+
+    public long getVolumeUsd24Usd() {
+        return VolumeUsd24Usd;
+    }
+
+    public void setVolumeUsd24Usd(long volumeUsd24Usd) {
+        VolumeUsd24Usd = volumeUsd24Usd;
     }
 
     @Override

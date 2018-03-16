@@ -23,7 +23,8 @@ public class TickerFunction implements Function<Ticker, TickerBean> {
         bean.setPriceUsd(Double.parseDouble(t.getPriceUsd()));
         bean.setPercentChange1H(Double.parseDouble(t.getPercentChange1h()));
         bean.setPercentChange24H(Double.parseDouble(t.getPercentChange24h()));
-        bean.setLastUpdated(new Date(Long.parseLong(t.getLastUpdated())*1000));
+        bean.setVolumeUsd24Usd((long) Double.parseDouble(t.get24hVolumeUsd()));
+        bean.setLastUpdated(new Date(Long.parseLong(t.getLastUpdated()) * 1000));
         return bean;
     }
 

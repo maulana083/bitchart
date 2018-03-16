@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -27,6 +29,9 @@ import com.bitchart.server.utils.Constants;
 @Service
 public class TickerService {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(TickerService.class);
+
     @Autowired
     private TickerPoolService poolService;
 
@@ -37,7 +42,17 @@ public class TickerService {
     private TickerMapper mapper;
 
     public TickerBean getTicker(String tickerId) {
-        return poolService.getTicker(tickerId);
+        if (StringUtils.isBlank(tickerId)) {
+            throw new IllegalArgumentException("TickerId cannot be null or blank");
+        }
+        TickerBean ticker = null;
+        try {
+            ticker = poolService.getTicker(tickerId);
+        } catch (Exception e) {
+            logger.error("Exception occured while getting ticker from pool with ticker id : {}", tickerId);
+            logger.error("Exception", e);
+        }
+        return ticker != null ? ticker : new TickerBean();
     }
 
     public List<TickerBean> getAllTicker() {
